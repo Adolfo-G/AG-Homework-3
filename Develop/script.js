@@ -39,6 +39,7 @@ function writePassword() {
     reset();
     return;
   };
+
   //looping through object to assign boolean values to prompts
   var keys = Object.keys(promptText);
   for (var i = 0; i < keys.length; i++) {
@@ -63,7 +64,7 @@ function writePassword() {
     return;
   };
 
-  var password = function generatePassword(){
+  var password = function generatePassword() {
     //confirmation text followed  by formation of an array with all needed characters. Followed by random selection of those characters
     passwordItems = passwordItems.join("");
     if (confirm("Your password will be " + passwordLength + " characters in length, and includes:\n" + passwordItems)) {
@@ -103,10 +104,9 @@ function writePassword() {
     characterSelected = [];
     passwordText.value = "";
   };
-  
-    passwordText.value = password();
-
+  //returns the password text and displays it on screen
+  passwordText.value = password();
 }
 
-// Add event listener to generate button
+//Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
