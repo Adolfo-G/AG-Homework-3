@@ -11,10 +11,25 @@ var passwordLength = 0;
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
   var passwordText = document.querySelector("#password");
+  //prompt and conditions for password length
+  reset();
+  passwordLength = prompt("Enter a number from 8-128: ");
+  passwordLength = parseInt(passwordLength);
+  if (isNaN(passwordLength)) {
+    alert("Invalid entry. Please try again.");
+    reset();
+    return;
+  };
+  if ((passwordLength < 8 || passwordLength > 128)) {
+    alert("Invalid entry. Please try again.");
+    reset();
+    return;
+  };
 
-  passwordText.value = password;
+  var password = function generatePassword(){}
+  
+    passwordText.value = password;
 
 }
 
