@@ -63,8 +63,34 @@ function writePassword() {
     return;
   };
 
-  var password = function generatePassword(){}
-  
+  var password = function generatePassword(){
+    //confirmation text followed  by formation of an array with all needed characters. Followed by random selection of those characters
+    passwordItems = passwordItems.join("");
+    if (confirm("Your password will be " + passwordLength + " characters in length, and includes:\n" + passwordItems)) {
+      if (promptDict["upperChecked"]) {
+        characterSelected = characterSelected.concat(upperCase);
+      };
+      if (promptDict["lowerChecked"]) {
+        characterSelected = characterSelected.concat(lowerCase);
+      };
+      if (promptDict["specialChecked"]) {
+        characterSelected = characterSelected.concat(specialCase);
+      };
+      if (promptDict["numberChecked"]) {
+        characterSelected = characterSelected.concat(numbers);
+      };
+      for (var i = 0; i < passwordLength; i++) {
+        var randPick = Math.floor(Math.random() * characterSelected.length);
+        finalPassword = finalPassword + characterSelected[randPick];
+      };
+      if(finalPassword.length>7){
+        return finalPassword;
+      };
+    } else {
+      reset();
+      return " ";
+    }; 
+  };
   function reset() {
     //resets values to avoid user error
     promptDict["upperChecked"] = false;
@@ -78,7 +104,7 @@ function writePassword() {
     passwordText.value = "";
   };
   
-    passwordText.value = password;
+    passwordText.value = password();
 
 }
 
