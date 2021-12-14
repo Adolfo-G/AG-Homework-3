@@ -57,8 +57,26 @@ function writePassword() {
       return;
     };
   };
+  if (promptDict["upperChecked"] === false && promptDict["lowerChecked"] === false && promptDict["numberChecked"] === false && promptDict["specialChecked"] === false) {
+    alert("Atleast one prompt must be marked yes. Please try again.");
+    reset();
+    return;
+  };
 
   var password = function generatePassword(){}
+  
+  function reset() {
+    //resets values to avoid user error
+    promptDict["upperChecked"] = false;
+    promptDict["lowerChecked"] = false;
+    promptDict["specialChecked"] = false;
+    promptDict["numberChecked"] = false;
+    passwordLength = 0;
+    finalPassword = [];
+    passwordItems = [];
+    characterSelected = [];
+    passwordText.value = "";
+  };
   
     passwordText.value = password;
 
